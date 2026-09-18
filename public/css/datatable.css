@@ -1,0 +1,217 @@
+.badge {
+    border-radius: 12px;
+    padding: 4px 8px
+}
+
+.bg-primary {
+    background: #0C79E7 !important;
+}
+
+.bg-success {
+    background: #288052 !important;
+}
+
+.bg-warning {
+    background: #FFCD28 !important;
+    color: #000
+}
+
+.bg-danger {
+    background: #FF383C !important;
+}
+
+.btn-success {
+    background: #288052 !important;
+    border-color: #288052;
+}
+
+.table {
+    margin: 0;
+}
+
+.table thead th {
+    background-color: #2f7d57 !important;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+.table thead th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.table thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.table tbody td {
+    padding: 6px 10px;
+    vertical-align: middle;
+    border-top: 1px solid #e5e7eb;
+}
+
+.table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+.table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+#table-permohonan {
+    margin: 0 !important;
+}
+
+.datatable-scroll {
+    overflow-x: auto;
+}
+
+.datatable-header {
+    background-color: #2f7d57 !important;
+    color: white;
+}
+
+.datatable-footer {
+    margin-top: 12px;
+}
+
+
+/* PAGINATION */
+.pagination {
+    gap: 10px;
+}
+
+/* Semua page-link */
+.pagination .page-link {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 2px solid #dcdcdc;
+    color: #1f2937;
+    font-weight: 700;
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.pagination .page-link:hover {
+    border-color: #288052;
+    color: #288052;
+}
+
+/* Active */
+.pagination .page-item.active .page-link {
+    background-color: #fff;
+    border-color: #288052;
+    color: #288052;
+    box-shadow: none;
+}
+
+/* Disabled (prev / next) */
+.pagination .page-item.disabled .page-link {
+    background-color: #e5e5e5;
+    border-color: #e5e5e5;
+    color: #c0c0c0;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Icon di disabled */
+.pagination .page-item.disabled .page-link i {
+    color: #c0c0c0;
+}
+
+/* Hilangkan default focus bootstrap */
+.pagination .page-link:focus {
+    box-shadow: none;
+}
+
+/* Ukuran next previous */
+.pagination .next .page-link,
+.pagination .previous .page-link {
+    padding: 8px;
+}
+
+/* LEGEND */
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F2F2F7;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.legend-text {
+    font-weight: 400;
+    color: #1C1C1E;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* column fixed */
+.DTFC_LeftBodyLiner {
+    top: -12px !important;
+    overflow-y: hidden !important;
+}
+
+.DTFC_Cloned tbody tr td {
+    border-bottom: none !important;
+}
+
+.icon-click {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    cursor: pointer;
+    border-radius: 8px;
+
+    transition: all 0.2s ease;
+}
+
+.icon-click:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transform: scale(1.05);
+}
+
+.dataTables_paginate {
+    padding-top: 10px !important;
+}
+
+/* hilangkan garis hitam header */
+.dataTables_wrapper .dataTables_scrollHead {
+    border-bottom: none !important;
+}
+
+/* perbaiki garis atas body */
+table.dataTable tbody tr:first-child td {
+    border-top: 1px solid #dee2e6 !important;
+}
+
+/* biar semua border konsisten */
+table.dataTable {
+    border-collapse: collapse !important;
+}

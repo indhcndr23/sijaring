@@ -1,0 +1,16 @@
+{
+	# Opsi global FrankenPHP (opsional)
+	frankenphp
+	auto_https off
+}
+
+:80 {
+	# Tentukan root folder mengarah ke public CI4
+	root * /app/public
+
+	# Aktifkan kompresi agar response lebih cepat
+	encode zstd br gzip
+
+	# Jalankan FrankenPHP untuk menangani file PHP & routing CI4
+	php_server
+}

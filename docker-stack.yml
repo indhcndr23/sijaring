@@ -1,0 +1,50 @@
+services:
+  app:
+    image: ${REGISTRY_HOST}/${PROJECT_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
+    ports:
+      - target: 80
+        published: ${APP_PORT}
+        protocol: tcp
+    environment:
+      CI_ENVIRONMENT: production
+      SLO_BASE_URL: ${SLO_BASE_URL}
+      app.baseURL: ${APP_BASE_URL}
+      PROXY_IPS: ${PROXY_IPS:-}
+      database.default.hostname: ${DB_HOSTNAME}
+      database.default.database: ${DB_DATABASE}
+      database.default.username: ${DB_USERNAME}
+      database.default.password: ${DB_PASSWORD}
+    volumes:
+      - /var/uploads/${IMAGE_NAME}:/app/writable/uploads
+      - logs:/app/writable/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.role == frontend
+      update_config:
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+        parallelism: 1
+      rollback_config:
+        order: stop-first
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+volumes:
+  uploads:
+  logs:

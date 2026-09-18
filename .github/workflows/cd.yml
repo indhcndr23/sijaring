@@ -1,0 +1,65 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  cd:
+    name: CD - Build, Push & Deploy
+    runs-on: self-hosted
+    if: github.ref == 'refs/heads/main'
+
+    env:
+      REGISTRY_HOST: ${{ vars.REGISTRY_HOST }}
+      PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+      IMAGE_NAME: ${{ vars.IMAGE_NAME }}
+      IMAGE_TAG: ${{ github.sha }}
+      DOCKER_BUILDKIT: 1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Login to Harbor Registry
+        env:
+          HARBOR_USER: ${{ secrets.REGISTRY_USERNAME }}
+          HARBOR_PASS: ${{ secrets.REGISTRY_PASSWORD }}
+        run: |
+          printf '%s' "$HARBOR_PASS" | docker login "$REGISTRY_HOST" -u "$HARBOR_USER" --password-stdin
+
+      - name: Build & Push Docker Image
+        run: |
+          COMMIT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+
+          docker build \
+            --build-arg APP_REVISION="$COMMIT_SHA" \
+            --build-arg APP_BUILD_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            -t "$REGISTRY_HOST/$PROJECT_NAME/$IMAGE_NAME:latest" \
+            -t "$REGISTRY_HOST/$PROJECT_NAME/$IMAGE_NAME:$IMAGE_TAG" \
+            .
+          docker push "$REGISTRY_HOST/$PROJECT_NAME/$IMAGE_NAME:latest"
+          docker push "$REGISTRY_HOST/$PROJECT_NAME/$IMAGE_NAME:$IMAGE_TAG"
+
+      - name: Deploy to Docker Swarm
+        env:
+          APP_NAME: ${{ vars.APP_NAME }}
+          APP_PORT: ${{ vars.APP_PORT }}
+          APP_BASE_URL: ${{ vars.APP_BASE_URL }}
+          SLO_BASE_URL: ${{ vars.SLO_BASE_URL }}
+          DB_HOSTNAME: ${{ secrets.DB_HOSTNAME }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          docker stack deploy \
+            --with-registry-auth \
+            -c docker-stack.yml \
+            "$IMAGE_NAME"
+
+      - name: Verify Service Status
+        run: |
+          echo "Waiting for Swarm service to converge..."
+          sleep 10
+          docker service ps "${IMAGE_NAME}_app" --no-trunc

@@ -1,0 +1,315 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+/* ======================================
+   WARNA DASAR
+====================================== */
+:root {
+    --green-main: #288052;
+    --green-button-main: #288052;
+    --brown-background-header: #fffbf0;
+    --green-soft: rgb(40, 128, 82, .075);
+    --green-text-soft: #E6F7EF;
+    --topbar-height: 70px;
+}
+
+/* ======================================
+   MENU UTAMA - ACTIVE
+====================================== */
+#sidebar-menu li a {
+  border-radius: 0px !important;
+}
+
+#sidebar-menu ul li.mm-active > a {
+    background-color: var(--green-soft) !important;
+    color: var(--green-main) !important;
+    font-weight: 500;
+    margin: 6px 12px;
+}
+
+#sidebar-menu ul li.mm-active > a i {
+    color: var(--green-main) !important;
+}
+
+/* ======================================
+   SUBMENU - ACTIVE (HIJAU SOLID)
+====================================== */
+#sidebar-menu ul li ul.sub-menu li.mm-active > a,
+#sidebar-menu ul li ul.sub-menu li a.active {
+    background-color: var(--green-soft) !important;
+    color: var(--green-main) !important;
+    font-weight: 500;
+    margin: 6px 20px;
+}
+
+#sidebar-menu ul li ul.sub-menu li.mm-active ul.sub-menu li.mm-active > a.active {
+    background-color: var(--green-main) !important;
+    color: var(--green-text-soft) !important;
+    border-radius: 8px;
+    font-weight: 500;
+    margin: 6px 20px;
+}
+
+#sidebar-menu ul li ul.sub-menu li.mm-active ul.sub-menu li > a:hover {
+  background: var(--green-main) !important;
+  color: var(--green-text-soft) !important;
+}
+
+/* ICON SUBMENU ACTIVE */
+#sidebar-menu ul li ul.sub-menu li.mm-active > a i,
+#sidebar-menu ul li ul.sub-menu li a.active i {
+    color: var(--green-text-soft) !important;
+}
+
+/* ======================================
+   MENU & SUBMENU - HOVER
+====================================== */
+#sidebar-menu ul li a:hover {
+    background-color: var(--green-main) !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+}
+
+#sidebar-menu ul li a:hover i {
+    color: #ffffff !important;
+}
+
+/* ======================================
+   SUBMENU NORMAL
+====================================== */
+#sidebar-menu ul li ul.sub-menu li a {
+    margin: 4px 20px;
+    border-radius: 8px;
+}
+
+/* ======================================
+   JARAK ANTAR ITEM SUBMENU
+====================================== */
+#sidebar-menu ul li ul.sub-menu li {
+    margin-top: 2px;
+}
+
+/* ======================================
+   DISABLE BACKGROUND DEFAULT TEMPLATE
+====================================== */
+#sidebar-menu ul li > a {
+    background: transparent;
+}
+
+/* =====================================
+   PAGE CONTENT TANPA SPACING
+===================================== */
+
+/* PAGE CONTENT */
+.page-content.no-spacing {
+    padding-top: var(--topbar-height) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* CONTAINER FLUID */
+.page-content.no-spacing > .container-fluid.no-spacing {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100%;
+}
+
+/* ROW BOOTSTRAP */
+.page-content.no-spacing .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* COLUMN BOOTSTRAP */
+.page-content.no-spacing [class^="col-"],
+.page-content.no-spacing [class*=" col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* CARD DEFAULT */
+.page-content.no-spacing .card {
+    margin-bottom: 0 !important;
+    border-radius: 0;
+}
+
+/* CARD BODY */
+.page-content.no-spacing .card-body {
+    padding: 1rem; /* ubah ke 0 jika mau benar² full */
+}
+
+/* HILANGKAN NEGATIVE MARGIN BOOTSTRAP */
+.page-content.no-spacing .mx-n4,
+.page-content.no-spacing .mt-n4,
+.page-content.no-spacing .mb-n4 {
+    margin: 0 !important;
+}
+
+/* IMAGE HEADER FULL WIDTH */
+.page-content.no-spacing img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* OPTIONAL: FULL BLEED HEADER */
+.page-content.no-spacing .card.position-relative {
+    border-radius: 0;
+}
+
+/* =====================================
+   AKTIFKAN GUTTER KHUSUS CARD
+===================================== */
+.page-content.no-spacing .row.row-card {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+}
+
+/* KEMBALIKAN PADDING COL KHUSUS CARD */
+.page-content.no-spacing .row.row-card > [class^="col-"],
+.page-content.no-spacing .row.row-card > [class*=" col-"] {
+    padding-left: calc(var(--bs-gutter-x) / 2) !important;
+    padding-right: calc(var(--bs-gutter-x) / 2) !important;
+}
+.card.card-soft {
+    border: 1.5px solid #d6d6d6;
+    box-shadow: 0 2px 6px rgba(18, 38, 63, 0.05);
+}
+/* ICON BUTTON – SKOTE STYLE */
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon i {
+    font-size: 22px;
+    line-height: 1;
+}
+/* =====================================
+   SKOTE – OVERRIDE PRIMARY BUTTON
+===================================== */
+.btn-primary {
+    background-color: var(--green-button-main) !important;
+    border-color: var(--green-button-main) !important;
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+/* Hover */
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--green-button-main) !important;
+    border-color: var(--green-button-main) !important;
+}
+
+/* Active */
+.btn-primary:active,
+.btn-primary.active {
+    background-color: #1f6b44 !important;
+    border-color: #1f6b44 !important;
+}
+
+/* Disabled */
+.btn-primary:disabled,
+.btn-primary.disabled {
+    background-color: rgba(59, 187, 120, 0.5) !important;
+    border-color: rgba(59, 187, 120, 0.5) !important;
+}
+
+.card-body-brown{
+    background-color: var(--brown-background-header) !important;
+}
+
+.header-card {
+    min-height: 200px;
+}
+
+/* SVG background */
+.header-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* content above everything */
+.header-title,
+.card-body {
+    position: relative;
+    z-index: 3;
+}
+
+/* overlay default OFF */
+.header-overlay-mobile {
+    display: none;
+}
+
+/* MOBILE ONLY */
+@media (max-width: 767px) {
+
+    .header-overlay-mobile {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+            180deg,
+            rgba(255,255,255,0.95) 0%,
+            rgba(255,255,255,0.75) 60%,
+            rgba(255,255,255,0.4) 100%
+        );
+    }
+
+    .header-title {
+        font-size: 1.4rem;
+        color: #212529;
+    }
+}
+
+.vertical-menu {
+  background: #FAFAFA;
+}
+
+body {
+  background: rgb(255, 255, 255);
+}
+
+select {
+  border-radius: 8px !important;
+}
+
+.page-content {
+  padding: 16px;
+}
+
+.card-dashboard {
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  /* height: 400px; */
+  align-items: stretch;
+  flex: 1;
+}
+
+.card-title-dashboard {
+  font-weight: 600;
+  line-height: 150%;
+  color: #020504;
+  margin: 0;
+}
+
+.card-subtitle-dashboard {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1B1E1D;
+  margin: 0;
+}
+
+.bg-green-main{
+    background-color: var(--green-button-main) !important;
+}
